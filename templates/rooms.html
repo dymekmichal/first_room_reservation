@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block content %}
+  <table>
+  <thead>
+    <tr>
+      <th>Today</th>
+      <th>Name</th>
+      <th>Capacity</th>
+      <th>Projector</th>
+      <th colspan="3">Room options</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for room in rooms %}
+    <tr>
+      <td> {{ room.get_status }} </td>
+      <td>
+        <a href="/rooms/{{ room.id }}/">{{ room.name }}</a>
+      </td>
+      <td>{{ room.capacity }}</td>
+      {% if room.projector_availability %}
+        <td style="color:green;">&#9745;</td>
+      {% else %}
+        <td style="color:red;">&#9746;</td>
+      {% endif %}
+      <td>
+        <form action="/rooms/modify/{{ room.id }}"><button type="submit">Edit</button></form>
+      </td>
+      <td>
+           <form action="/rooms/delete/{{ room.id }}"><button type="submit">Delete</button></form>
+      </td>
+      <td>
+      <form action="/rooms/reserve/{{ room.id }}"><button type="submit">Book</button></form>
+      </td>
+    </tr>
+    {% empty %}
+      <tr><td>No Rooms available</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+    <h3>Searching</h3>
+    <form action="/search" method="GET">
+        <table>
+        <tr><td><label for="name">Room name</label></td>
+        <td><input type="text" name="name"></td></tr>
+        <tr><td><label for="capacity">Minimal quantity</label></td>
+            <td><input type="number" step="1" name="capacity"></td></tr>
+        <tr><td><label for="projector">Projector availability</label></td>
+            <td><input type="checkbox" name="projector"></td>
+            </tr>
+            <tr><td><button type="submit">Search</button></td></tr>
+        </table>
+    </form>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <p></p>
+    <form action="" method="post">
+    {% csrf_token %}
+    <table>
+        <tr>
+    <td><label>Room name:</label></td>
+    <td><input type="text" name="name" placeholder="Enter unique Room name"></td>
+        </tr>
+    <tr>
+        <td><label>Capacity:</label></td>
+        <td><input type="number" step="1" name="capacity" placeholder="Enter Room capacity"></td>
+    </tr>
+    <tr>
+        <td><label>Projector:</label></td>
+        <td><input type="checkbox" name="projector"></td></tr>
+        <tr align="centre"><td><button type="submit" value="Add Room">Add Room</button></td></tr>
+    </table>
+    </form>
+
+    {% if error %}
+{#        <div class="alert alert-warning alert-dismissible fade show" role="alert">#}
+  {{error}}
+{#  <button type="button" class="close" data-dismiss="alert" aria-label="Close">#}
+{#    <span aria-hidden="true">&times;</span>#}
+{#  </button>#}
+{#        </div>#}
+{% endif %}
+{% endblock %}

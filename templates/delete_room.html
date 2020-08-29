@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+        <p>Do you really want to delete Room: {{ rooms.name }} </p><br>
+<form method="post">
+{% csrf_token %}
+<input type="submit" name="submit" value="Yes">
+<input type="submit" name="submit" value="No">
+</form>
+{% endblock %}

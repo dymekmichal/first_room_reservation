@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <p></p>
+    <h2>Room: <i>{{ room.name }}</i></h2>
+    <p>Capacity: {{ room.capacity }}</p>
+    <p>Projector: {% if room.projector_availability %}
+        <span style="color:green;">&#9745;</span>
+      {% else %}
+        <span style="color:red;">&#9746;</span>
+      {% endif %}
+    </p>
+    <p>
+      <a href="/rooms/modify/{{ room.id }}/">Edit</a>
+      <a href="/rooms/delete/{{ room.id }}/">Delete</a>
+      <a href="/rooms/reserve/{{ room.id }}/">Book</a>
+    </p>
+
+    <h3>Rezervations:</h3>
+    <ul>
+      {% for reservation in reservations %}
+        <li>
+          <h4>{{ reservation.date }}</h4>
+          <p>{{ reservation.comment }}</p>
+        </li>
+      {% endfor %}
+    </ul>
+{#    <form action="" method="post">#}
+{#    {% csrf_token %}#}
+{#    <table>#}
+{#        <tr>#}
+{#    <td><label>Room name:</label></td>#}
+{#    <td><input type="text" name="name" placeholder="Enter unique Room name"></td>#}
+{#        </tr>#}
+{#    <tr>#}
+{#        <td><label>Capacity:</label></td>#}
+{#        <td><input type="number" step="1" name="capacity" placeholder="Enter Room capacity"></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#        <td><label>Projector:</label></td>#}
+{#        <td><input type="checkbox" name="projector"></td></tr>#}
+{#        <tr align="centre"><td><button type="submit" value="Add Room">Add Room</button></td></tr>#}
+{#    </table>#}
+{#    </form>#}
+
+    {% if error %}
+  {{error}}
+{% endif %}
+{% endblock %}

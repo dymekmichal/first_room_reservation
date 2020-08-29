@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Room Reservation</title>
+</head>
+<body bgcolor="#f0ffff">
+<table>
+   <tr>
+    <td><form action="/"><button type="submit" style="color: red">Home</button></form></td>
+    <td><form action="/rooms/"><button type="submit" style="color: red">Room list</button></form></td>
+    <td><form action="/add_room/"><button type="submit" style="color: red">Add new room</button></form></td>
+   </tr>
+ </table>
+
+ {% block content %}
+     <p><font size="5">Welcome to the <strong> Room Reservation</strong> site.</font></p>
+ {% endblock %}
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+    <footer>
+    <font size="2">
+
+        <p>Author: Michał Dymek</p>
+        <p><a href="mailto:wszystkopisanerazem@gmail.com">Send me an e-mail</a></p>
+    </font>
+    </footer>
+</body>
+
+</html>
